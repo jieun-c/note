@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { GlobalStyle } from "./styled/globalstyle";
 import Login from "./components/login";
 import Note from "./components/note";
 
 const App = () => {
-  const [isLogin, setIsLogin] = useState(false);
   const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
 
   useEffect(() => {
     getUsers();
   }, []);
-
-  useEffect(() => {}, [isLogin]);
 
   const getUsers = async () => {
     const url = `https://jsonplaceholder.typicode.com/users`;
@@ -29,19 +27,21 @@ const App = () => {
       alert("해당하는 id가 없습니다.");
       return;
     }
-
-    setIsLogin(true);
     setUser(current);
     alert("Welcome!");
   };
 
   const logout = () => {
-    setIsLogin(false);
-    setUser({});
+    setUser();
     alert("Bye!");
   };
 
-  return <>{isLogin && user ? <Note user={user} logout={logout} /> : <Login login={login} />}</>;
+  return (
+    <>
+      <GlobalStyle />
+      {user ? <Note user={user} logout={logout} /> : <Login login={login} />}
+    </>
+  );
 };
 
 export default App;

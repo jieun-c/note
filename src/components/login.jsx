@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Form } from "../styled/styled";
 
 const Login = ({ login }) => {
   const [userId, setUserId] = useState("");
@@ -18,9 +19,15 @@ const Login = ({ login }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input type="text" placeholder="ID를 입력하세요." value={userId} onChange={changeInput} />
-    </form>
+    <Form onSubmit={onSubmit}>
+      <input
+        type="text"
+        placeholder="ID를 입력하세요."
+        value={userId}
+        onChange={changeInput}
+        autoFocus
+      />
+    </Form>
   );
 };
 

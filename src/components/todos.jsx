@@ -1,5 +1,5 @@
 const Todos = () => {
-  return <div></div>;
+  return <div>Todos</div>;
 };
 
 export default Todos;
