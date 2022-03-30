@@ -28,7 +28,6 @@ const App = () => {
       return;
     }
     setUser(current);
-    alert("Welcome!");
   };
 
   const logout = () => {
